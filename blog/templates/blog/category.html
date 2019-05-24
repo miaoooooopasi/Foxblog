@@ -1,0 +1,52 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+ <div class="album-content w1000"  id="layer-photos-demo" class="layer-photos-demo">
+    <div class="img-list">
+      <div class="layui-fluid" style="padding:0">
+        <div class="layui-row layui-col-space30 space">
+          <div class="layui-col-xs12 layui-col-sm4 layui-col-md4">
+            <div class="item">
+                <a href="/blog/category/python"><img src="{% static  'imgs/study.jpg'%}"></a>
+              <div class="cont-text">
+
+                <div class="data">更新时间：{{ python.create_time }}</div>
+
+                <p class="address"><i class="layui-icon">&#xe653;  </i><span>python</span></p>
+
+              </div>
+            </div>
+          </div>
+          <div class="layui-col-xs12 layui-col-sm4 layui-col-md4">
+            <div class="item">
+                <a href="/blog/category/web"><img src="{% static  'imgs/talkabout.jpg'%}"></a>
+              <div class="cont-text">
+
+                <div class="data">更新时间：{{ web.create_time }}</div>
+
+                <p class="address"><i class="layui-icon ">&#xe705;  </i><span>web</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="layui-col-xs12 layui-col-sm4 layui-col-md4">
+            <div class="item">
+                <a href="/blog/category/spider"><img src="{% static  'imgs/web.jpg'%}"></a>
+              <div class="cont-text">
+
+                <div class="data">更新时间：{{ spider.create_time }}</div>
+
+                <p class="address"><i class="layui-icon">&#xe615;  </i><span>爬虫</span></p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div id="demo"></div>
+    </div>
+  </div>
+ </div>
+{% endblock %}

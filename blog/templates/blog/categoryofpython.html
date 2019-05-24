@@ -1,0 +1,75 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="content">
+    <div class="cont w1000">
+        <div class="list-item">
+        {% if pythons %}
+            {% for python in pythons %}
+            <div class="item layui-col-lg-offset2">
+                <div class="layui-fluid">
+                    <div class="layui-row">
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
+                        <div class="img"><img src="/uploads/{{python.img.image}}" height="220" width="280" alt=""> {{contact.}}</div>
+
+                    </div>
+                        <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                            <div class="item-cont">
+                                <h3><a class="text-dark" href="/blog/{{contact.id}}" id="easy_title">{{ python.title }}</a></h3>
+                                <h5>分类：{{ python.category}} , 浏览次数：{{ python.click_nums}}</h5>
+                                {% if python.content %}
+                                    <p>{{ python.content | striptags | escape | slice:":60"  }}</p>
+                                {% endif %}
+                                <a href="#" id="easy_title" class="go-icon"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p></p>
+            <div class="item layui-col-lg-offset3">
+                <h2><img src="#" width="50" height="50">暂时没有相关内容</h2>
+            </div>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <style>
+        .footer{
+            bottom: -20px;
+            left: 45%;
+            margin-left: -65px; /*要居中的div的宽度的一半*/
+        }
+    </style>
+<div class="footer">
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if python.has_previous %}
+            <a class="text-dark" href="?page=1">&laquo; 第一页</a>
+            <a class="text-dark" href="?page={{ pythons.previous_page_number }}">上一页</a>
+        {% endif %}
+        <!---
+        <span class="current">
+            Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+        </span>
+        --->
+        {% for page in pythons.paginator.page_range %}
+            <a class="active text-dark" href="/blog/category/python?page={{ page }}">{{ page }}</a>
+        {% endfor %}
+
+        {% if pythons.has_next %}
+            <a class="text-dark" href="?page={{ pythons.next_page_number }}">下一页</a>
+            <a class="text-dark" href="?page={{ pythons.paginator.num_pages }}">最后一页 &raquo;</a>
+        {% endif %}
+    </span>
+    </div>
+
+{% endblock %}
+

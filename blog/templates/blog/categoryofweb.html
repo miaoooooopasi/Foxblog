@@ -1,0 +1,75 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="content">
+    <div class="cont w1000">
+        <div class="list-item">
+        {% if webs %}
+            {% for web in webs %}
+            <div class="item layui-col-lg-offset2">
+                <div class="layui-fluid">
+                    <div class="layui-row">
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
+                        <div class="img"><img src="/uploads/{{web.img.image}}" height="220" width="280" alt=""> {{contact.}}</div>
+
+                    </div>
+                        <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                            <div class="item-cont">
+                                <h3><a class="text-dark" href="/blog/{{web.id}}" id="easy_title">{{ web.title }}</a></h3>
+                                <h5>分类：{{ web.category}} , 浏览次数：{{ web.click_nums}}</h5>
+                                {% if web.content %}
+                                    <p>{{ web.content | striptags | escape | slice:":60"  }}</p>
+                                {% endif %}
+                                <a href="#" id="easy_title" class="go-icon"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p></p>
+            <div class="item layui-col-lg-offset3">
+                <h2><img src="#" width="50" height="50">暂时没有相关内容</h2>
+            </div>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <style>
+        .footer{
+            bottom: -20px;
+            left: 45%;
+            margin-left: -65px; /*要居中的div的宽度的一半*/
+        }
+    </style>
+<div class="footer">
+
+    <div class="pagination">
+
+        {% if webs.has_previous %}
+            <li class="page-item"><a class="page-link text-dark" href="?page=1">&laquo; 第一页</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page={{ webs.previous_page_number }}">上一页 &raquo;</a></li>
+        {% endif %}
+        <!---
+        <span class="current">
+            Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+        </span>
+        --->
+        {% for page in webs.paginator.page_range %}
+            <li class="page-item"><a class="page-link text-dark" href="/blog/category/web?page={{ page }}">{{ page }}</a></li>
+        {% endfor %}
+
+        {% if webs.has_next %}
+            <li class="page-item"><a class="page-link text-dark" href="?page={{ webs.next_page_number }}">下一页</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page={{ webs.paginator.num_pages }}">最后一页 &raquo;</a></li>
+        {% endif %}
+
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    {% block head %}
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static '/css/main.css' %}"/>
+    <link href="{% static  '/css/layui.css' %}" rel="stylesheet"/>
+    <script src="{% static  'js/layui.js' %}"></script>
+    <script src="{% static  'js/post_comment.js'%}"></script>
+
+    {% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+    <style type="text/css">
+          .jumbotrons
+        {
+            background: #f8f8f8;
+            background-size: cover;
+            height:90px
+        }
+          a{
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- top部分-->
+    <div >
+        {% block top%}
+        <div class="header">
+            <div class="menu-btn">
+                <div class="menu"></div>
+            </div>
+
+            <div class="nav layui-col-lg-offset1">
+                <a href="/blog/" class="active">主页</a>
+                <a href="/blog/category/">分类</a>
+                <a href="/blog/talkabout/">杂谈</a>
+                <a href="/blog/timeline/">时间轴</a>
+                <a href="/blog/about/">关于</a>
+            </div>
+			<ul class="layui-nav header-down-nav">
+				<li class="layui-nav-item"><a href="#" class="active">主页</a></li>
+				<li class="layui-nav-item"><a href="#">分类</a></li>
+				<li class="layui-nav-item"><a href="#">杂谈</a></li>
+				<li class="layui-nav-item"><a href="#">时间轴</a></li>
+				<li class="layui-nav-item"><a href="#">关于</a></li>
+			</ul>
+
+
+            <p class="welcome-text">
+                <span class="name">不积跬步无以至千里，不积小流无以成江海</span>~
+            </p>
+            <h1 class="logo">
+            <a href="#">
+                <span>MYBLOG</span>
+                <img src="{% static '/imgs/logo.png' %}">
+            </a>
+            </h1>
+		</div>
+
+        {% endblock %}
+    </div>
+
+    <!-- 中间部分-->
+    <div >
+        {% block content%}
+
+        {% endblock %}
+    </div>
+
+    <!-- footer部分-->
+    <div id="footer">
+        {% block footer %}
+
+
+
+        {% endblock %}
+    </div>
+</body>
+
+</html>
+
+
