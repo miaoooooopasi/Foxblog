@@ -1,6 +1,34 @@
 {% extends "blog/base.html" %}
 {% load staticfiles %}
 {% block content %}
+
+
+
+
+<div class="layui-container">
+
+  <div class="layui-row">
+
+      <div class="layui-col-md2 layui-col-lg2">
+              <div class="content">
+                  <div class="cont w1000">
+                      <div class="">
+                          <div class="">
+                              <li ><h5 class="card-title">推荐博文</h5></li>
+                              {% for top in top_5 %}
+                                    <li class="layui-icon">&#xe66e;<a href="/blog/{{top.id}}" class="card-link text-dark">{{ top.title }}</a></li>
+                                    &nbsp
+                              {% endfor %}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+
+      </div>
+
+    <div class="layui-col-md10 layui-col-lg10">
     <div class="content">
     <div class="cont w1000">
         <div class="list-item">
@@ -18,7 +46,7 @@
                                 <h3><a class="text-dark" href="/blog/{{contact.id}}" id="easy_title">{{ contact.title }}</a></h3>
                                 <h5>分类：{{ contact.category}} , 浏览次数：{{ contact.click_nums}}</h5>
                                 {% if contact.content %}
-                                    <p>{{ contact.content | striptags | escape | slice:":60"  }}</p>
+                                    <p>{{ contact.content | striptags | escape | slice:":20"  }}</p>
                                 {% endif %}
                                 <a href="#" id="easy_title" class="go-icon"></a>
                             </div>
@@ -36,6 +64,10 @@
       </div>
     </div>
   </div>
+    </div>
+
+  </div>
+</div>
 {% endblock %}
 
 {% block footer %}
@@ -50,10 +82,10 @@
 <div class="footer">
 
     <div class="pagination">
-    <span class="step-links">
+
         {% if contacts.has_previous %}
-            <a class="text-dark" href="?page=1">&laquo; 第一页</a>
-            <a class="text-dark" href="?page={{ contacts.previous_page_number }}">上一页</a>
+            <a class="page-link text-dark" href="?page=1">&laquo; 第一页</a>
+            <a class="page-link text-dark" href="?page={{ contacts.previous_page_number }}">上一页</a>
         {% endif %}
         <!---
         <span class="current">
@@ -61,14 +93,14 @@
         </span>
         --->
         {% for page in contacts.paginator.page_range %}
-            <a class="text-dark" href="/blog/?page={{ page }}">{{ page }}</a>
+            <a class="page-link text-dark" href="/blog/?page={{ page }}">{{ page }}</a>
         {% endfor %}
 
         {% if contacts.has_next %}
-            <a class="text-dark" href="?page={{ contacts.next_page_number }}">下一页</a>
-            <a class="text-dark" href="?page={{ contacts.paginator.num_pages }}">最后一页 &raquo;</a>
+            <a class="page-link text-dark" href="?page={{ contacts.next_page_number }}">下一页</a>
+            <a class="page-link text-dark" href="?page={{ contacts.paginator.num_pages }}">最后一页 &raquo;</a>
         {% endif %}
-    </span>
+
     </div>
 
 {% endblock %}

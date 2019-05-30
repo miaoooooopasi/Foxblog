@@ -27,8 +27,9 @@ import xadmin
 urlpatterns = [
     path('admin/', xadmin.site.urls),
     path('mdeditor/', include('mdeditor.urls')),
-    path(r'^uploads/(?P<path>.*)$', serve, {"document_root": settings.MEDIA_ROOT}),
+    path('^uploads/(?P<path>.*)$', serve, {"document_root": settings.MEDIA_ROOT}),
     path('blog/', include('blog.urls')),
+    path('search/', include('haystack.urls')),
 
 ]
 

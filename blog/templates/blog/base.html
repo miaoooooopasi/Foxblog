@@ -22,6 +22,10 @@
           a{
             text-decoration: none;
         }
+        .layui-input{
+            height: 30px;
+            line-height: 30px\9;
+        }
     </style>
 
 </head>
@@ -31,9 +35,6 @@
     <div >
         {% block top%}
         <div class="header">
-            <div class="menu-btn">
-                <div class="menu"></div>
-            </div>
 
             <div class="nav layui-col-lg-offset1">
                 <a href="/blog/" class="active">主页</a>
@@ -41,16 +42,15 @@
                 <a href="/blog/talkabout/">杂谈</a>
                 <a href="/blog/timeline/">时间轴</a>
                 <a href="/blog/about/">关于</a>
+                <div class="layui-inline">
+                    <form class="layui-form" role="search" method="get" id="searchform" action="{% url 'haystack_search' %}">
+                        <div class="layui-inline">
+                            <input class="layui-input form-control " lay-verify="required" name="q" size="4" id="q" autocomplete="off">
+                        </div>
+                        <button class="layui-btn layui-btn-primary layui-btn-sm layui-icon" type="submit">&#xe615;</button>
+                    </form>
+                </div>
             </div>
-			<ul class="layui-nav header-down-nav">
-				<li class="layui-nav-item"><a href="#" class="active">主页</a></li>
-				<li class="layui-nav-item"><a href="#">分类</a></li>
-				<li class="layui-nav-item"><a href="#">杂谈</a></li>
-				<li class="layui-nav-item"><a href="#">时间轴</a></li>
-				<li class="layui-nav-item"><a href="#">关于</a></li>
-			</ul>
-
-
             <p class="welcome-text">
                 <span class="name">不积跬步无以至千里，不积小流无以成江海</span>~
             </p>

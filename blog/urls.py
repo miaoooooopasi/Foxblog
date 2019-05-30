@@ -19,7 +19,12 @@ from django.conf.urls import include
 
 
 from django.urls import path, re_path
+
+
+
 from . import views
+
+app_name = 'blog'
 
 urlpatterns = [
     path('', views.homepage, name='homepage'),
@@ -30,9 +35,10 @@ urlpatterns = [
     path('category/spider', views.categoryofspider, name='spider'),
     path('timeline/', views.timeline, name='timeline'),
     path('about/', views.about, name='about'),
-    path('talkabout/', views.talkabout, name='talkabout'),
+    path('talkabout/', views.categoryoftalkabout, name='talkabout'),
+    # path('search/', MySearchIndex(), name='haystack_search'),
 
-    # path('', views.homepageView.as_view(), name="homepage"),
+    # path('top_5/', views., name="top_5"),
 ]
 
 

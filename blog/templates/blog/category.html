@@ -1,10 +1,12 @@
 {% extends "blog/base.html" %}
 {% load staticfiles %}
-
 {% block content %}
 
+    <div class="content">
+    <div class="cont w1000">
+        <div class="list-item">
 
- <div class="album-content w1000"  id="layer-photos-demo" class="layer-photos-demo">
+ <div class="album-content w1000 item"  id="layer-photos-demo" class="layer-photos-demo">
     <div class="img-list">
       <div class="layui-fluid" style="padding:0">
         <div class="layui-row layui-col-space30 space">
@@ -39,14 +41,15 @@
                 <div class="data">更新时间：{{ spider.create_time }}</div>
 
                 <p class="address"><i class="layui-icon">&#xe615;  </i><span>爬虫</span></p>
-
             </div>
           </div>
-
         </div>
       </div>
       <div id="demo"></div>
     </div>
   </div>
  </div>
+        </div>
+    </div>
+    </div>
 {% endblock %}

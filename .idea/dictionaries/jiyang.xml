@@ -7,6 +7,7 @@
       <w>categoryofhomepage</w>
       <w>categoryofpython</w>
       <w>categoryofspider</w>
+      <w>categoryoftalkabout</w>
       <w>categoryofweb</w>
       <w>codehilite</w>
       <w>creat</w>
@@ -14,6 +15,7 @@
       <w>crontab</w>
       <w>deux</w>
       <w>easys</w>
+      <w>elip</w>
       <w>endblock</w>
       <w>endfor</w>
       <w>etsy</w>
@@ -22,12 +24,17 @@
       <w>imgs</w>
       <w>layui</w>
       <w>mdeditor</w>
+      <w>navbar</w>
+      <w>nbsp</w>
+      <w>realtime</w>
       <w>showblog</w>
       <w>sslist</w>
       <w>starttime</w>
       <w>stdimage</w>
       <w>talkabout</w>
+      <w>talkabouts</w>
       <w>timeaxi</w>
+      <w>truncatechars</w>
       <w>xadmin</w>
     </words>
   </dictionary>

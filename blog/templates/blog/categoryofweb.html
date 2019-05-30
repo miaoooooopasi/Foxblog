@@ -18,7 +18,7 @@
                                 <h3><a class="text-dark" href="/blog/{{web.id}}" id="easy_title">{{ web.title }}</a></h3>
                                 <h5>分类：{{ web.category}} , 浏览次数：{{ web.click_nums}}</h5>
                                 {% if web.content %}
-                                    <p>{{ web.content | striptags | escape | slice:":60"  }}</p>
+                                    <p>{{ web.content | striptags | escape | slice:":20"  }}</p>
                                 {% endif %}
                                 <a href="#" id="easy_title" class="go-icon"></a>
                             </div>

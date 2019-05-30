@@ -31,7 +31,7 @@
 
 {% block content %}
     <div class="content whisper-content leacots-content details-content">
-        <div class="cont w1000">
+        <div class="cont w750">
             <div class="whisper-list">
                 <div class="item-box">
                     <div class="review-version">
@@ -41,8 +41,8 @@
                                     <h3>{{easy.title}}</h3>
                                     <p class="cont-info">
                                         <span class="data">时间：{{ easy.create_time }}</span>
-                                        <span class="layui-icon">&#xe66a;{{ easy.category }}</span>
-                                        <span class="layui-icon">&#xe66f;
+                                        <span class="layui-icon">&#xe674;{{ easy.category }} &nbsp&nbsp&nbsp&nbsp</span>
+                                        <span class="layui-icon">&#xe66e;
                                             {% for tag in tags%}
                                                 {{ tag.tag_name }}、
                                             {% endfor %}

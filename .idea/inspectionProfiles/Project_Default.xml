@@ -5,6 +5,7 @@
       <option name="ignoredErrors">
         <list>
           <option value="W391" />
+          <option value="E501" />
         </list>
       </option>
     </inspection_tool>
@@ -17,6 +18,13 @@
         </list>
       </option>
     </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="all" />
+        </list>
+      </option>
+    </inspection_tool>
     <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredIdentifiers">
         <list>
@@ -25,6 +33,10 @@
           <option value="blog.models.UploadImage" />
           <option value="blog.views.current_page_num" />
           <option value="django.views.generic.ListView" />
+          <option value="haystack.indexes" />
+          <option value="haystack.views.SearchView.get_queryset" />
+          <option value="haystack.views.SearchView.get_context_data" />
+          <option value="jieba.analyse.ChineseAnalyzer" />
         </list>
       </option>
     </inspection_tool>

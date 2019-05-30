@@ -1,15 +1,20 @@
 from django.shortcuts import render
+from haystack.views import SearchView
+
+from Foxblog import settings
 from .models import Blogs, Category, UploadImage, Timeaxi
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import get_object_or_404, render
 import markdown
 
 from django.views.generic import ListView
+from datetime import date
+
 
 # Create your views here.
 
 
-# 分页的通用视图
+# 分页的通用视图类
 class categorryView(ListView):
     context_object_name = 'contacts'
     template_name = 'blog/homepage.html'
@@ -47,7 +52,10 @@ def homepage(request):
     paginator = Paginator(all_blogs, 3)
     page = request.GET.get('page')
     contacts = paginator.get_page(page)
-    return render(request, 'blog/homepage.html', {'contacts': contacts})
+
+    top_5 = Blogs.objects.order_by('-click_nums')[0:6]
+    # print(top_5)
+    return render(request, 'blog/homepage.html', {'contacts': contacts, 'top_5': top_5})
 
 
 def detail(request, blog_id):
@@ -121,9 +129,21 @@ def categoryofspider(request):
     paginator = Paginator(spider, 3)
     page = request.GET.get('page')
     contacts = paginator.get_page(page)
-
     context = {'spiders': contacts}
     return render(request, 'blog/categoryofspider.html', context=context)
+
+
+# talkabout:id=5
+def categoryoftalkabout(request):
+    talkabouts = Blogs.objects.filter(category_id=5)
+    # 循环处理查询结果set里的 content 转换为html
+    for blog in talkabouts:
+        blog.content = markdown.markdown(blog.content)
+    paginator = Paginator(talkabouts, 3)
+    page = request.GET.get('page')
+    contacts = paginator.get_page(page)
+    context = {'talkabout': contacts}
+    return render(request, 'blog/categoryoftalkabout.html', context=context)
 
 
 # timeline
@@ -150,3 +170,23 @@ def talkabout(request):
 
     context = {'contacts': contacts}
     return render(request, 'blog/homepage.html', context=context)
+
+
+# 搜索引擎 全站搜索
+'''
+class MySearchView(SearchView):
+    """My custom search view."""
+
+    def get_queryset(self):
+        queryset = super(MySearchView, self).get_queryset()
+        # further filter queryset based on some set of criteria
+        return queryset.filter(pub_date__gte=date(2015, 1, 1))
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(MySearchView, self).get_context_data(*args, **kwargs)
+        # do something
+        return context
+'''
+
+
+
