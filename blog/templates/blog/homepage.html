@@ -20,9 +20,28 @@
                                     &nbsp
                               {% endfor %}
                           </div>
+
+                          <div>
+                              <li ><h5 class="card-title">博文归档</h5></li>
+                              {% for archive in archive_list %}
+
+
+
+                                             <li class="layui-icon">&#xe62a;
+                                                <a class="card-link text-dark" href='{% url 'blog:archive' %}?year={{ archive | slice:":4" }}&month={{ archive | slice:"5:7" }}'>{{ archive }}</a>
+                                                </a>
+                                            </li>
+
+
+
+
+                                {% endfor %}
+                          </div>
+
                       </div>
                   </div>
               </div>
+
 
 
 

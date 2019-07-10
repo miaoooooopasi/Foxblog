@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404, render
 import markdown
 
 from django.views.generic import ListView
-from datetime import date
+from .utils import use_whether_api
 
 
 # Create your views here.
@@ -52,10 +52,11 @@ def homepage(request):
     paginator = Paginator(all_blogs, 3)
     page = request.GET.get('page')
     contacts = paginator.get_page(page)
-
     top_5 = Blogs.objects.order_by('-click_nums')[0:6]
-    # print(top_5)
-    return render(request, 'blog/homepage.html', {'contacts': contacts, 'top_5': top_5})
+
+    archive_list = Blogs.objects.distinct_date()  # 文章归档 获取到的列表格式为： xxx年/xxx月 存档
+
+    return render(request, 'blog/homepage.html', {'contacts': contacts, 'top_5': top_5, 'archive_list': archive_list})
 
 
 def detail(request, blog_id):
@@ -189,4 +190,19 @@ class MySearchView(SearchView):
 '''
 
 
-
+# 按时间归档分类视图
+def archive(request):
+    year = request.GET.get('year', None)
+    month = request.GET.get('month', None)   # 取出两个参数 year,month
+    print(year,month)
+    # 根据参数year,month进行过滤， 记得字段名+__icontains表大小写不敏感的包含匹配
+    blogs = Blogs.objects.filter(create_time__icontains=year + '-' + month)
+    # 循环处理查询结果set里的 content 转换为html
+    for blog in blogs:
+        blog.content = markdown.markdown(blog.content)
+    # 分页  每页三篇
+    paginator = Paginator(blogs, 3)
+    page = request.GET.get('page', 1)
+    contacts = paginator.get_page(page)
+    context = {'pythons': contacts}
+    return render(request, 'blog/categoryofpython.html', context=context)

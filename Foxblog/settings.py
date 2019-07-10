@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd2vmeo7v@o9e#g$zgt&3t1ef&2pqg*ef=lg82ndll%7^jmv7(-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['www.bonjours.cn', '120.79.173.190', '127.0.0.1']
 
@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -127,8 +128,8 @@ USE_TZ = False
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')  # uploads必须存在，且在项目目录下
-MEDIA_URL = '/uploads/'  # 你上传的文件和图片会默认存在/uploads/下
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # uploads必须存在，且在项目目录下
+MEDIA_URL = '/media/'  # 你上传的文件和图片会默认存在/uploads/下
 
 # 定时任务
 
@@ -148,3 +149,6 @@ HAYSTACK_CONNECTIONS = {
 
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 3
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)

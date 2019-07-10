@@ -17,12 +17,12 @@ Including another URLconf
 
 from django.conf.urls import include
 
-
 from django.urls import path, re_path
 
 
 
 from . import views
+from django.conf.urls import url
 
 app_name = 'blog'
 
@@ -37,6 +37,8 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('talkabout/', views.categoryoftalkabout, name='talkabout'),
     # path('search/', MySearchIndex(), name='haystack_search'),
+    # path('category/<int:year>/<int:month>/', views.categoryoftime, name='categoryoftime'),
+    url(r'^archive/$', views.archive, name='archive'),
 
     # path('top_5/', views., name="top_5"),
 ]

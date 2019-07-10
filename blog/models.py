@@ -8,7 +8,7 @@ from django.db import models
 from django.utils import timezone
 from datetime import datetime
 from stdimage.models import StdImageField
-
+from .utils.ArticleManager import BlogManager
 
 class Category(models.Model):
     """
@@ -100,6 +100,7 @@ class Blogs(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name=u'文章类别')
     tags = models.ManyToManyField(Tags, verbose_name=u'文章标签', blank=True)
     img = models.OneToOneField(UploadImage, verbose_name=u'封面', on_delete=models.CASCADE, null=True)
+    objects = BlogManager()   # 在模型中使用自定义的管理器
 
     def __str__(self):
         return self.title

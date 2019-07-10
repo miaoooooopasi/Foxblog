@@ -27,11 +27,15 @@ import xadmin
 urlpatterns = [
     path('admin/', xadmin.site.urls),
     path('mdeditor/', include('mdeditor.urls')),
-    path('^uploads/(?P<path>.*)$', serve, {"document_root": settings.MEDIA_ROOT}),
-    path('blog/', include('blog.urls')),
+    path('^media/(?P<path>.*)$', serve, {"document_root": settings.MEDIA_ROOT}),
+    path('blog/', include('blog.urls', namespace='blog')),
     path('search/', include('haystack.urls')),
 
+
+
 ]
+
+
 
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)

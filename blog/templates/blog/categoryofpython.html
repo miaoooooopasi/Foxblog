@@ -10,7 +10,7 @@
                 <div class="layui-fluid">
                     <div class="layui-row">
                         <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
-                        <div class="img"><img src="/uploads/{{python.img.image}}" height="220" width="280" alt=""> {{contact.}}</div>
+                        <div class="img"><img src="/media/{{python.img.image}}" height="220" width="280" alt=""> {{contact.}}</div>
 
                     </div>
                         <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
@@ -50,7 +50,7 @@
 <div class="footer">
 
     <div class="pagination">
-    <span class="step-links">
+
         {% if python.has_previous %}
             <a class="page-link text-dark" href="?page=1">&laquo; 第一页</a>
             <a class="page-link text-dark" href="?page={{ pythons.previous_page_number }}">上一页</a>
@@ -68,7 +68,7 @@
             <a class="page-link text-dark" href="?page={{ pythons.next_page_number }}">下一页</a>
             <a class="page-link text-dark" href="?page={{ pythons.paginator.num_pages }}">最后一页 &raquo;</a>
         {% endif %}
-    </span>
+
     </div>
 
 {% endblock %}
